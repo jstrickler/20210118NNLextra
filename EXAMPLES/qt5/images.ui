@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Images</class>
+ <widget class="QMainWindow" name="Images">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>526</width>
+    <height>348</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Images</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>-7</x>
+      <y>6</y>
+      <width>525</width>
+      <height>299</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="tabA">
+     <attribute name="title">
+      <string>A</string>
+     </attribute>
+     <widget class="QLabel" name="labA">
+      <property name="geometry">
+       <rect>
+        <x>34</x>
+        <y>55</y>
+        <width>471</width>
+        <height>134</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>60</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Apple</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabB">
+     <attribute name="title">
+      <string>B</string>
+     </attribute>
+     <widget class="QLabel" name="labB">
+      <property name="geometry">
+       <rect>
+        <x>37</x>
+        <y>59</y>
+        <width>445</width>
+        <height>134</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>60</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Banana</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabC">
+     <attribute name="title">
+      <string>C</string>
+     </attribute>
+     <widget class="QLabel" name="labC">
+      <property name="geometry">
+       <rect>
+        <x>46</x>
+        <y>58</y>
+        <width>454</width>
+        <height>134</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>60</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cherry</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>526</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPictures">
+    <property name="title">
+     <string>Pictures</string>
+    </property>
+    <addaction name="actionPictureA"/>
+    <addaction name="actionPictureB"/>
+    <addaction name="actionPictureC"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuPictures"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionA">
+   <property name="text">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionB">
+   <property name="text">
+    <string>B</string>
+   </property>
+  </action>
+  <action name="actionC">
+   <property name="text">
+    <string>C</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionPictureA">
+   <property name="text">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionPictureB">
+   <property name="text">
+    <string>B</string>
+   </property>
+  </action>
+  <action name="actionPictureC">
+   <property name="text">
+    <string>C</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

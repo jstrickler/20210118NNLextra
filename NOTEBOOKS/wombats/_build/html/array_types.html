@@ -1,0 +1,833 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wombats for Your Soul</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-2 bd-sidebar site-navigation show single-page" id="site-navigation">
+    
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-4-array-types">
+<h1>Chapter 4 Array Types<a class="headerlink" href="#chapter-4-array-types" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Using single and multidimensional lists and tuples</p></li>
+<li><p>Indexing and slicing sequential types</p></li>
+<li><p>Looping over sequences</p></li>
+<li><p>Tracking indices with enumerate()</p></li>
+<li><p>Using range() to get numeric lists</p></li>
+<li><p>Transforming lists</p></li>
+</ul>
+<div style="page-break-after: always"></div></div>
+<div class="section" id="about-array-types">
+<h2>About Array Types<a class="headerlink" href="#about-array-types" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Array types
+** str
+** bytes
+** list
+** tuple</p></li>
+<li><p>Common properties of array types
+** Same syntax for indexing/slicing
+** Share some common methods and functions
+** All can be iterated over with a  for loop</p></li>
+</ul>
+<p>Python provides many data types for working with multiple values. Some of these are array types. These hold values in a sequence, such that they can be retrieved by a numerical index.</p>
+<p>A str is an array of characters.
+A bytes object is array of bytes.</p>
+<p>All array types may be indexed in the same way, retrieving a single item or a slice (multiple values) of the sequence.</p>
+<p>Array types have some features in common with other container types, such as dictionaries and sets. These other container types will be covered in a later chapter.</p>
+<p>All array types support iteration over their elements with a for loop.</p>
+<div class="admonition-tip admonition">
+<p class="admonition-title">TIP</p>
+<p>All arrays are iterable</p>
+</div>
+<div style="page-break-after: always"></div>
+<div class="section" id="typical-arrays-py">
+<h3>typical_arrays.py<a class="headerlink" href="#typical-arrays-py" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;fig&#39;</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Eric Idle&quot;</span>
+<span class="n">knight</span> <span class="o">=</span> <span class="s1">&#39;King&#39;</span><span class="p">,</span> <span class="s1">&#39;Arthur&#39;</span><span class="p">,</span> <span class="s1">&#39;Britain&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># &lt;1&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># &lt;2&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">knight</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># &lt;3&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>kiwi
+i
+Arthur
+</pre></div>
+</div>
+</div>
+</div>
+<div style="page-break-after: always"></div>
+## Lists
+****
+* Array of objects
+* Create with [  ]
+* Add items with append(), extend(), or insert
+* Remove items with del, pop(), or remove()
+****
+<p>A list is one of the fundamental Python data types. Lists are used to store multiple values. The values may be similar – all numbers, all user names, and so forth; they may also be completely different. Due to the dynamic nature of Python, a list may hold values of any  type, including other lists.</p>
+<p>Create a list with a pair of square brackets. A list can be Initialized with a comma-separated list of values.</p>
+<p>:examplebase: creating_lists</p>
+<div style="page-break-after: always"></div></div>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Use brackets for index</p></li>
+<li><p>Use slice for multiple values</p></li>
+<li><p>Same syntax for strings, lists, and tuples</p></li>
+</ul>
+<hr class="docutils" />
+<p>Python is very flexible in selecting elements from a list. All selections are done by putting an index or a range of indices in square brackets after the list’s name.</p>
+<p>To get a single element, specify the index (0-based) of the element in square brackets:</p>
+<div style="page-break-after: always"></div></div>
+<div class="section" id="ifdef-highlight-source-python-endif-highlight">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#ifdef-highlight-source-python-endif-highlight" title="Permalink to this headline">¶</a></h2>
+<p>foo =  [ “apple”, “banana”, “cherry”, “date”, “elderberry”,
+“fig”,”grape” ]</p>
+</div>
+<div class="section" id="foo-1-the-2nd-element-of-list-foo-banana">
+<h2>foo[1]  the 2nd element of list foo – banana<a class="headerlink" href="#foo-1-the-2nd-element-of-list-foo-banana" title="Permalink to this headline">¶</a></h2>
+<p>To get more than one element, use a slice, which specifies the beginning element (inclusive) and the ending element (exclusive):</p>
+</div>
+<div class="section" id="id1">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="foo-2-5-foo-2-foo-3-foo-4-but-not-foo-5-cherry-date-elderberry">
+<h2>foo[2:5]    foo[2], foo[3], foo[4] but NOT foo[5] – cherry, date, elderberry<a class="headerlink" href="#foo-2-5-foo-2-foo-3-foo-4-but-not-foo-5-cherry-date-elderberry" title="Permalink to this headline">¶</a></h2>
+<p>If you omit the starting index of a slice, it defaults to 0:</p>
+</div>
+<div class="section" id="id2">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="foo-5-foo-0-foo-1-foo-2-foo-3-foo-4-apple-banana-cherry-date-elderberry">
+<h2>foo[:5] foo[0], foo[1], foo[2], foo[3], foo[4] – apple,banana,cherry, date, elderberry<a class="headerlink" href="#foo-5-foo-0-foo-1-foo-2-foo-3-foo-4-apple-banana-cherry-date-elderberry" title="Permalink to this headline">¶</a></h2>
+<p>If you omit the end element, it defaults to the length of the list.</p>
+</div>
+<div class="section" id="id3">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="foo-4-foo-4-foo-5-foo-6-elderberry-fig-grape">
+<h2>foo[4:] foo[4], foo[5], foo[6] – elderberry, fig, grape<a class="headerlink" href="#foo-4-foo-4-foo-5-foo-6-elderberry-fig-grape" title="Permalink to this headline">¶</a></h2>
+<p>A negative offset is subtracted from the length of the list, so -1 is the last element of the list, and -2 is the next-to-the-last element of the list, and so forth:</p>
+</div>
+<div class="section" id="id4">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="foo-1-foo-len-foo-1-or-foo-6-grape-foo-3-foo-len-foo-3-or-foo-4-elderberry">
+<h2>foo[-1] foo[len(foo)-1] or foo[6] – grape
+foo[-3] foo[len(foo)-3] or foo[4] – elderberry<a class="headerlink" href="#foo-1-foo-len-foo-1-or-foo-6-grape-foo-3-foo-len-foo-3-or-foo-4-elderberry" title="Permalink to this headline">¶</a></h2>
+<p>The general syntax for a slice is</p>
+</div>
+<div class="section" id="id5">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="s-start-stop-step">
+<h2>s[start:stop:step]<a class="headerlink" href="#s-start-stop-step" title="Permalink to this headline">¶</a></h2>
+<p>which  means all elements s[N], where</p>
+<p>start &lt;= N &lt; stop,</p>
+<p>and start is incremented by step</p>
+<p>TIP: Remember that start is <strong>IN</strong>clusive but stop is <strong>EX</strong>clusive.</p>
+<p>(((indexing))) (((slicing)))</p>
+<p>ifdef::instructor[]
+[instructor-heading]<em>Instructor Note</em>
+[instructor-text]#Slide: <em><em>Slices</em></em>.#
+endif::instructor[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: indexing_and_slicing
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id6">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="include-exampledir-examplefile">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#include-exampledir-examplefile" title="Permalink to this headline">¶</a></h2>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="iterating-through-a-sequence">
+<h2>Iterating through a sequence<a class="headerlink" href="#iterating-through-a-sequence" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>use a <strong>for</strong> loop</p></li>
+<li><p>works with lists, tuples, strings, or any other iterable</p></li>
+<li><p>Syntax</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="for-var-in-iterable-statement-statement">
+<h2>for var in iterable:
+statement
+statement
+…<a class="headerlink" href="#for-var-in-iterable-statement-statement" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>To iterate through the values of a list, use the <em>for</em> statement.  The variable takes on each value in the sequence, and keeps the value of the last item when the loop has finished.</p>
+<p>To exit the loop early, use the break statement. To skip the remainder of an iteration, and return to the top of the loop, use the continue statement.</p>
+<p><em>for</em> loops can be used with any iterable object.</p>
+<p>TIP: The loop variable retains the last value it was set to in the loop even after the loop is finished. (If the loop is in a function, the loop variable is local; otherwise, it is global).</p>
+<p>(((iterating through a sequence))) (((for loop)))</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: iterating_over_arrays
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id7">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id8">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<div style="page-break-after: always"></div>
+## Tuples (((tuples)))
+****
+* Designed for "records" or "structs"
+* Immutable (read-only)
+* Create with comma-separated list of objects
+* Use for fixed-size collections of related objects
+* Indexing, slicing, etc. are same as lists
+****
+<p>Python has a second array type, the <em>tuple</em>. It is something like a list, but is immutable; that is, you cannot change values in a tuple after it has been created.</p>
+<p>A tuple in Python is used for “records” or “structs” – collections of related items. You do not typically iterate over a tuple; it is more likely that you access elements individually, or <em>unpack</em> the tuple into variables.</p>
+<p>Tuples are especially appropriate for functions that need to return multiple values; they can also be good for passing function arguments with multiple values.</p>
+<p>While both tuples and lists can be used for any data, there are some conventions.</p>
+<ul class="simple">
+<li><p>Use a list when you have a collection of similar objects.</p></li>
+<li><p>Use a tuple when you have a collection of related, but dissimilar objects.</p></li>
+</ul>
+<p>In a tuple, the position of elements is important; in a list, the position is not important.</p>
+<p>For example, you might have a list of dates, where each date was contained in a month, day, year tuple.</p>
+<p>To specify a one-element tuple, use a trailing comma; to specify an empty tuple, use empty parentheses.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="result-5-result">
+<h2>result = 5,
+result = ()<a class="headerlink" href="#result-5-result" title="Permalink to this headline">¶</a></h2>
+<p>TIP: Parentheses are not needed around a tuple unless the tuple is nested in a larger data structure.</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: creating_tuples
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id9">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id10">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<blockquote>
+<div><p><strong>TIP</strong>: To specify a one-element tuple, use a trailing comma, otherwise it will be interpreted as a single object:</p>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="color-red">
+<h2>color = ‘red’,<a class="headerlink" href="#color-red" title="Permalink to this headline">¶</a></h2>
+<p>ifdef::instructor[]
+[instructor-heading]<em>Instructor Note</em></p>
+<p>[instructor-text]#It’s important to emphasize that a tuple is designed for unpacking or directly indexing, and that it is not just a less useful version of a list.#</p>
+<p>[instructor-text]#Slide: <em><em>Lists vs Tuples</em></em>.#</p>
+<p>endif::instructor[]</p>
+<p>====</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="iterable-unpacking">
+<h2>Iterable Unpacking<a class="headerlink" href="#iterable-unpacking" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Copy elements to variables</p></li>
+<li><p>Works with any array-like object</p></li>
+<li><p>More readable than numeric indexing</p></li>
+</ul>
+<hr class="docutils" />
+<p>If you have a tuple like this:</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="my-date-8-1-2014">
+<h2>my_date = 8, 1, 2014<a class="headerlink" href="#my-date-8-1-2014" title="Permalink to this headline">¶</a></h2>
+<p>You can access the elements with</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="print-my-date-0-my-date-1-my-date-2">
+<h2>print(my_date[0], my_date[1], my_date[2])<a class="headerlink" href="#print-my-date-0-my-date-1-my-date-2" title="Permalink to this headline">¶</a></h2>
+<p>It’s not very readable though. How do you know which is the month and
+which is the day?</p>
+<p>A better approach is <em>unpacking</em>, which is simply copying a tuple (or any other ((iterable)){empty}) to a list of variables:</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="month-day-year-my-date">
+<h2>month, day, year = my_date<a class="headerlink" href="#month-day-year-my-date" title="Permalink to this headline">¶</a></h2>
+<p>Now you can use the variables and anyone reading the code will know what they mean. This is really how tuples were designed to be used.</p>
+<p>ifdef::instructor[]
+[instructor-heading]<em>Instructor Note</em>
+[instructor-text]#If the class is interested, you can show them extended unpacking.#
+endif::instructor[]</p>
+<p>(((tuple unpacking)))</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="nested-sequences">
+<h2>Nested sequences<a class="headerlink" href="#nested-sequences" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Lists and tuples may contain other lists and tuples</p></li>
+<li><p>Use multiple brackets to specify higher dimensions</p></li>
+<li><p>Depth of nesting limited only by memory</p></li>
+</ul>
+<hr class="docutils" />
+<p>Lists and tuples can contain any type of data, so a two-dimensional array can be created using a list of lists. A typical real-life scenario consists of reading data into a list of tuples.</p>
+<p>There are many combinations – lists of tuples, lists of lists, etc.</p>
+<p>To initialize a nested data structure, use nested brackets and parentheses, as needed.</p>
+<p>(((nested sequences)))</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: nested_sequences
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id12">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id13">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="functions-for-all-sequences">
+<h2>Functions for all sequences<a class="headerlink" href="#functions-for-all-sequences" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Many builtin functions expect a sequence</p></li>
+<li><p>Syntax</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id14">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>n = len(s)
+n = min(s)
+n = max(s)
+n = sum(s)
+s2 = sorted(s)
+s2 = reversed(s)
+s = zip(s1,s2,...)
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Many builtin functions accept a sequence as the parameter. These functions can be applied to a list, tuple, dictionary, or set.</p>
+<p><em>len(s)</em> returns the number of elements in s (the number of characters in a string).</p>
+<p><em>min(s)</em> and <em>max(s)</em> return the smallest and largest values in s. Types in s must be similar – mixing strings and numbers will raise an error.</p>
+<p><em>sorted(s)</em> returns a sorted list of any sequence s.</p>
+<p>NOTE: min(), max(), and sorted() accept a named parameter <em>key</em>, which specifies a key function for converting each element of s to the value wanted for comparison. In other words, the key function could convert all strings to lower case, or provide one property of an object.</p>
+<p><em>sum(s)</em> returns the sum of all elements of s, which must all be numeric.</p>
+<p><em>reversed(s)</em> returns an iterator (not a list) that can loop through s in reverse order.</p>
+<p><em>zip(s1,s2,…)</em> returns an iterator consisting of  (s1[0],s2[0]),(s1[1], s2[1]), …). This can be used to “pivot” rows and columns of data.</p>
+<p>(((sequence functions)))
+(((<strong>len()</strong>))) (((<strong>min()</strong>))) (((<strong>max()</strong>))) (((<strong>sum()</strong>)))
+(((<strong>sorted()</strong>))) (((<strong>reversed()</strong>))) (((<strong>zip()</strong>)))</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: sequence_functions
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id15">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id16">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="using-enumerate">
+<h2>Using enumerate()<a class="headerlink" href="#using-enumerate" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Numbers items beginning with 0 (or specified value)</p></li>
+<li><p>Returns enumerate object that provides a <em>virtual</em> list of tuples</p></li>
+</ul>
+<hr class="docutils" />
+<p>To get the index of each list item, use the builtin function enumerate(s). It returns an <em>enumerate object</em>.</p>
+</div>
+<div class="section" id="id17">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p>for t in enumerate(s):
+print(t[0],t[1])</p>
+<p>for i,item in enumerate(s):
+print(i,item)</p>
+</div>
+<div class="section" id="for-i-item-in-enumerate-s-1-print-i-item">
+<h2>for i,item in enumerate(s,1)
+print(i,item)<a class="headerlink" href="#for-i-item-in-enumerate-s-1-print-i-item" title="Permalink to this headline">¶</a></h2>
+<p>When you iterate through the following list with enumerate():</p>
+<hr class="docutils" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[x,y,z]
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>you get this (virtual) list of tuples:</p>
+<hr class="docutils" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(0,x),(1,y),(2,z)]
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>You can give enumerate() a second argument, which is added to the index. This way you can start numbering at 1, or any other place.
+(((enumerate())))</p>
+<p>ifdef::instructor[]
+[instructor-heading]<em>Instructor Note</em></p>
+<p>[instructor-text]#Discuss collections vs. virtual lists here, so students can learn that enumerate(), reverse(),  open(), zip(), etc. return generators.#</p>
+<p>[instructor-text]#Slide: <em><em>enumerate()</em></em>.#</p>
+<p>[instructor-text]#Slide: <em><em>Iterables</em></em>.#</p>
+<p>endif::instructor[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: enumerate
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id18">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id19">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="operators-and-keywords-for-sequences">
+<h2>Operators and keywords for sequences<a class="headerlink" href="#operators-and-keywords-for-sequences" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Operators +   *</p></li>
+<li><p>Keywords  <em>del</em>   <em>in</em>   <strong>not in</strong></p></li>
+</ul>
+<hr class="docutils" />
+<p><em>del</em> deletes an entire string, list, or tuple. It can also delete one element, or a slice, from a list. del cannot remove elements of strings and tuples, because they are immutable.</p>
+<p><em>in</em> returns True if the specified object is an element of the sequence.</p>
+<p><em>not in</em> returns True if the specified object is <em>not</em> an element of the sequence.</p>
+<p><em>+</em>  adds one sequence to another</p>
+<p><em>{splat}</em> multiplies a sequence (i.e., makes a bigger sequence by repeating the original).</p>
+<p>(((in)))</p>
+</div>
+<div class="section" id="id20">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x in s  #note – x can be any Python object
+s2 = s1 * 3
+s3 = s1 + s2
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: sequence_operators
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id21">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id22">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="the-range-function-range-lparen-rparen">
+<h2>The range() function (((range{lparen}{rparen})))<a class="headerlink" href="#the-range-function-range-lparen-rparen" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Provides (virtual) list of numbers</p></li>
+<li><p>Slice-like parameters</p></li>
+<li><p>Syntax
+ifdef::highlight[]
+[source,python]
+endif::highlight[]</p></li>
+</ul>
+<hr class="docutils" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>range(stop)
+range(start, stop)
+range(start, stop, step)
+</pre></div>
+</div>
+<hr class="docutils" />
+<hr class="docutils" />
+<p>The range() function returns a <strong>range object</strong>, that provides a list of numbers when iterated over. The parameters to range() are similar to the parameters for slicing (start, stop, step).</p>
+<p>This can be useful to execute some code a fixed number of times.</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: using_ranges
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id23">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id24">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile}]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="list-comprehensions-list-comprehension">
+<h2>List comprehensions (((list comprehension)))<a class="headerlink" href="#list-comprehensions-list-comprehension" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Shortcut for a for loop</p></li>
+<li><p>Optional if clause</p></li>
+<li><p>Always returns list</p></li>
+<li><p>Syntax</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="expr-for-var-in-sequence-if-expr">
+<h2>[ EXPR for VAR in SEQUENCE if EXPR ]<a class="headerlink" href="#expr-for-var-in-sequence-if-expr" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>A list comprehension is a Python idiom that creates a shortcut for a for loop. A loop like this:</p>
+</div>
+<div class="section" id="id25">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="results-for-var-in-sequence-results-append-expr-where-expr-involves-var">
+<h2>results = []
+for var in sequence:
+results.append(expr)   # where expr involves var<a class="headerlink" href="#results-for-var-in-sequence-results-append-expr-where-expr-involves-var" title="Permalink to this headline">¶</a></h2>
+<p>can be rewritten as</p>
+</div>
+<div class="section" id="id26">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="results-expr-for-var-in-sequence">
+<h2>results = [ expr for var in sequence ]<a class="headerlink" href="#results-expr-for-var-in-sequence" title="Permalink to this headline">¶</a></h2>
+<p>A conditional if may be added:</p>
+</div>
+<div class="section" id="id27">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="results-expr-for-var-in-sequence-if-expr">
+<h2>results = [ expr for var in sequence if expr ]<a class="headerlink" href="#results-expr-for-var-in-sequence-if-expr" title="Permalink to this headline">¶</a></h2>
+<p>The loop expression can be  a tuple.
+You can nest two or more for loops.</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: list_comprehensions
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id28">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id29">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {exampledir}{examplefile} | head -30]</p>
+<p><strong>etc etc</strong></p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+</div>
+<div class="section" id="generator-expressions-generator-expressions">
+<h2>Generator Expressions (((generator expressions)))<a class="headerlink" href="#generator-expressions-generator-expressions" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Similar to list comprehensions</p></li>
+<li><p>Lazy evaluations – only execute as needed</p></li>
+<li><p>Syntax</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id30">
+<h2>( EXPR for VAR in SEQUENCE if EXPR )<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>A generator expression is very similar to a list comprehension. There are two major differences, one visible and one invisible.</p>
+<p>The visible difference is that generator expressions are created with parentheses rather than square brackets. The invisible difference is that instead of returning a list, they return an iterable object.</p>
+<p>The object only fetches each item as requested, and if you stop partway through the sequence; it never fetches the remaining items. Generator expressions are thus frugal with memory.</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Example</p>
+<p>:examplebase: generator_expressions
+:examplefile: {examplebase}.py</p>
+<p><em>{examplefile}</em></p>
+</div>
+<div class="section" id="id31">
+<h2>ifdef::highlight[]
+[source,python]
+endif::highlight[]<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id32">
+<h2>include::{exampledir}{examplefile}[]<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<p>include::{exampledir}callouts/{examplebase}.callouts[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p><em><em>{examplefile}</em></em></p>
+<p>capture::[cd {exampledir} &amp;&amp; {python3exe} {examplefile}]</p>
+<p>ifdef::instructor[]
+[instructor-heading]<em>Instructor Note</em></p>
+<p>[instructor-text]#This is a good place to talk about collections vs. generators.#</p>
+<p>[instructor-text]#Slide: <em><em>Iterables</em></em>.#
+endif::instructor[]</p>
+<p>// leave page break before labs for both PDF and EPUB</p>
+<p>&lt;&lt;&lt;</p>
+<p>[float]</p>
+</div>
+<div class="section" id="chapter-chapternum-exercises">
+<h2>Chapter {chapternum} Exercises<a class="headerlink" href="#chapter-chapternum-exercises" title="Permalink to this headline">¶</a></h2>
+<p>:!labnum:</p>
+<p>=## Exercise {chapternum}-{counter:labnum} (pow2.py)</p>
+<p>Print out all the powers of 2 from 2^0^ through 2^31^.</p>
+<p>Use the ** operator, which raises a number to a power.</p>
+<p>NOTE: For exercises {chapternum}-2 and {chapternum}-3, start with the file sequences.py, which has the lists ctemps and fruits already typed in.  You can put all the answers in sequences.py</p>
+<p>=## Exercise {chapternum}-{counter:labnum} (sequences.py)</p>
+<p><em>ctemps</em> is a list of Celsius temperatures. Loop through ctemps, convert each temperature to Fahrenheit, and print out both temperatures.</p>
+<p>=## Exercise {chapternum}-{counter:labnum} (sequences.py)
+Use a list comprehension to copy the list <em>fruits</em> to a new list named <em>clean_fruits</em>, with all fruits in lower case and leading/trailing white space removed. Print out the new list.</p>
+<p>HINT: Use chained methods  (x.spam().ham())</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Exercise {chapternum}-{counter:labnum} (sieve.py)</p>
+<p><strong>FOR ADVANCED STUDENTS</strong></p>
+<p>The “Sieve of Eratosthenes” is an ancient algorithm for finding prime numbers. It works by starting at 2 and checking each number up to a specified limit. If the number has been marked as non-prime, it is skipped. Otherwise, it is prime, so it is output, and all its multiples are marked as non-prime.</p>
+<p>Write a program  to implement this algorithm. Specify the limit (the highest number to check) on the script’s command line. Supply a default if no limit is specified.</p>
+<p>Initialize a list (maybe named <em>is_prime</em>) to the size of the limit plus one (use * to multiply a single-item list). All elements should be set to <em>True</em>.</p>
+<p>Use two <em>nested</em> loops.</p>
+<p>The outer loop will check each value (element of the array) from 2 to the upper limit. (use the <code class="docutils literal notranslate"><span class="pre">range()</span></code>) function.</p>
+<p>If the element has a <em>True</em> value (is prime),  print out its value. Then, execute a second loop iterates through all the multiples of the number, and marks them as <em>False</em> (i.e., non-prime).</p>
+<p>No action is needed if the value is False. This will skip the non-prime numbers.</p>
+<p>TIP: Use range() to generate the multiples of the current number.</p>
+<p>NOTE: In this exercise, the <em>value</em> of the element is either <em>True</em> or <em>False</em> – the <em>index</em> is the number be checked for primeness.</p>
+<p><em>See next page for the pseudocode for this program:</em></p>
+<p>ifdef::instructor[]
+[instructor-heading]<em>Instructor Note</em>
+[instructor-text]#The sieve exercise (for advanced students) might require a bit of whiteboarding to explain.#
+endif::instructor[]</p>
+<p>ifndef::ebook-format[&lt;&lt;&lt;]</p>
+<p>=## Pseudocode for sieve.py</p>
+<hr class="docutils" />
+<p>if # command line args ## 1
+get LIMIT from command line
+else
+set LIMIT to 50</p>
+<p>Initialize IS_PRIMES list to size LIMIT+1, with all TRUE values</p>
+</div>
+<div class="section" id="for-num-from-2-to-limit-1-if-is-prime-num-output-num-for-m-from-num-to-limit-1-counting-by-num-is-prime-m-false">
+<h2>for NUM  from 2 to LIMIT+1
+if IS_PRIME[NUM]
+output NUM
+for M from NUM to LIMIT+1, counting by NUM
+IS_PRIME[M] = FALSE<a class="headerlink" href="#for-num-from-2-to-limit-1-if-is-prime-num-output-num-for-m-from-num-to-limit-1-counting-by-num-is-prime-m-false" title="Permalink to this headline">¶</a></h2>
+<p>// vim: set syntax=asciidoc:</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Strickler<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
