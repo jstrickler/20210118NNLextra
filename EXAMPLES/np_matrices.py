@@ -22,3 +22,8 @@ print()
 print('m1 @ m2 =>\n', m1 @ m2)  # <4>
 print()
 
+mx1 = np.matrix(m1)
+mx2 = np.matrix(m2)
+print(mx1 * mx2)
+
+
